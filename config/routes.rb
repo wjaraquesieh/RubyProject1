@@ -8,7 +8,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  Rails.application.routes.draw do
-    get 'makeup', to: 'makeup#index'
-  end
+  resources :makeups, only: [:index, :show]
 end
