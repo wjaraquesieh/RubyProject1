@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= @product.name %> - Details</title>
+</head>
+<body>
+  <header>
+    <h1><%= @product.name %></h1>
+    <a href="/product">Back to Product List</a>
+  </header>
+  <main>
+    <p>Precio: $<%= @producto.precio %></p>
+    <p>Marca: <%= @producto.marca %></p>
+    <p>Descripción: <%= @producto.descripcion %></p>
+    <h3>Categorías:</h3>
+    <ul>
+      <% @producto.categorias.each do |categoria| %>
+        <li><%= categoria.nombre %></li>
+      <% end %>
+    </ul>
+    <h3>Tags:</h3>
+    <ul>
+      <% @producto.tags.each do |tag| %>
+        <li><%= tag.nombre %></li>
+      <% end %>
+    </ul>
+  </main>
+</body>
+</html>
