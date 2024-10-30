@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   root "home#index"
   get "products", to: "product#index"
   get "product/:id", to: "product#show", as: "product"
-  get "search", to: "products#search"
+  get "search", to: "product#search"
+
+  resources :product_type, only: [ :index ]
 end
