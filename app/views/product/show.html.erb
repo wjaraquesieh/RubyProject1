@@ -1,29 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title><%= @product.name %> - Details</title>
-</head>
-<body>
-  <header>
-    <h1><%= @product.name %></h1>
-    <a href="/product">Back to Product List</a>
-  </header>
-  <main>
-    <p>Precio: $<%= @producto.precio %></p>
-    <p>Marca: <%= @producto.marca %></p>
-    <p>Descripción: <%= @producto.descripcion %></p>
-    <h3>Categorías:</h3>
-    <ul>
-      <% @producto.categorias.each do |categoria| %>
-        <li><%= categoria.nombre %></li>
-      <% end %>
-    </ul>
-    <h3>Tags:</h3>
-    <ul>
-      <% @producto.tags.each do |tag| %>
-        <li><%= tag.nombre %></li>
-      <% end %>
-    </ul>
-  </main>
-</body>
-</html>
+<div class="container mt-5">
+  <h1><%= @product.name %></h1>
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <img src="<%= @product.image %>" alt="<%= @product.name %>" class="img-fluid">
+    </div>
+    <div class="col-md-8">
+      <h3>Details</h3>
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Price:</strong> <%= number_to_currency(@product.price) %></li>
+        <li class="list-group-item"><strong>Brand:</strong> <%= @product.brand.description %></li>
+
+        <li class="list-group-item"><strong>Description:</strong> <%= @product.description %></li>
+        <!-- Agrega más detalles específicos del producto según sea necesario -->
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%# <li class="list-group-item"><strong>Categories:</strong> <%= @product.categories.pluck(:name).join(", ") </li> %>
+        <%# <li class="list-group-item"><strong>Tags:</strong> <%= @product.tags.pluck(:name).join(", ") </li> %>
