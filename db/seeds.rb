@@ -14,6 +14,8 @@ require 'csv'
 # Clean all the data
 Tag.destroy_all
 Brand.destroy_all
+ProductType.destroy_all
+Category.destroy_all
 
 # Loop to get the information
 CSV.foreach('db/csv/tag.csv', headers: true) do |row|
@@ -21,6 +23,12 @@ CSV.foreach('db/csv/tag.csv', headers: true) do |row|
 end
 CSV.foreach('db/csv/brand.csv', headers: true) do |row|
   Brand.create(description: row['description'])
+end
+CSV.foreach('db/csv/product_type.csv', headers: true) do |row|
+  ProductType.create(description: row['description'])
+end
+CSV.foreach('db/csv/category.csv', headers: true) do |row|
+  Category.create(description: row['description'])
 end
 
 # 50.times do
