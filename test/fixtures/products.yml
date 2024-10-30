@@ -2,24 +2,24 @@
 
 one:
   name: MyString
-  brand: MyString
+  brand: one
+  product_type: one
+  category: one
   price: 9.99
   currency: MyString
   image: MyString
   link: MyString
   description: MyText
   rating: 1.5
-  product_type: one
-  category: one
 
 two:
   name: MyString
-  brand: MyString
+  brand: two
+  product_type: two
+  category: two
   price: 9.99
   currency: MyString
   image: MyString
   link: MyString
   description: MyText
   rating: 1.5
-  product_type: two
-  category: two

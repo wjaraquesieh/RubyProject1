@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_23_192759) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_29_001215) do
   create_table "brands", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_23_192759) do
 
   create_table "colors", force: :cascade do |t|
     t.string "hex_value"
-    t.string "color_name"
+    t.string "colorName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,23 +65,24 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_23_192759) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "brand"
+    t.integer "brand_id", null: false
+    t.integer "product_type_id", null: false
+    t.integer "category_id", null: false
     t.decimal "price"
     t.string "currency"
     t.string "image"
     t.string "link"
     t.text "description"
     t.float "rating"
-    t.integer "product_type_id", null: false
-    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["product_type_id"], name: "index_products_on_product_type_id"
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "tag_name"
+    t.string "tagName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,6 +93,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_23_192759) do
   add_foreign_key "product_colors", "products"
   add_foreign_key "product_tags", "products"
   add_foreign_key "product_tags", "tags"
+  add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "product_types"
 end

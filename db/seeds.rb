@@ -8,31 +8,25 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
 require 'csv'
+# require 'faker'
 
 # Clean all the data
 Tag.destroy_all
 Brand.destroy_all
 
-# Going through the csv file
-csv_tag = Rails.root.join('db/tag.csv')
-csv_dataTag = File.read(csv_tag)
-tag = CSV.parse(csv_dataTag, headers: true)
-
-csv_brand = Rails.root.join('db/brand.csv')
-csv_dataBrand = File.read(csv_brand)
-brand = CSV.parse(csv_dataBrand, headers: true)
-
 # Loop to get the information
-tag.each do |row|
-  Tag.create(
-    tag_name: row['tag_name'],
-  )
+CSV.foreach('db/csv/tag.csv', headers: true) do |row|
+  Tag.create(tagName: row['tag_name'])
+end
+CSV.foreach('db/csv/brand.csv', headers: true) do |row|
+  Brand.create(description: row['description'])
 end
 
-brand.each do |row|
-  Brand.create(
-    description: row['description'],
-  )
-end
+# 50.times do
+#   Product.create(
+#     name: Faker::Commerce.product_name,
+#     price: Faker::Commerce.price(range: 5.0..50.0),
+#     description: Faker::Lorem.paragraph
+#   )
+# end

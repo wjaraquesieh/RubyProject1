@@ -2,8 +2,8 @@
 
 one:
   hex_value: MyString
-  color_name: MyString
+  colorName: MyString
 
 two:
   hex_value: MyString
-  color_name: MyString
+  colorName: MyString
