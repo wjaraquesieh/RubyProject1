@@ -5,6 +5,8 @@ class ProductController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    color_ids = @product.product_color.pluck(:color_id)
+    @colors = Color.where(id: color_ids)
   end
 
   def search
