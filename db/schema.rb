@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_29_001215) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_29_001209) do
   create_table "brands", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", null: false
@@ -28,15 +28,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_29_001215) do
     t.string "colorName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "product_categories", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "category_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_product_categories_on_category_id"
-    t.index ["product_id"], name: "index_product_categories_on_product_id"
   end
 
   create_table "product_colors", force: :cascade do |t|
@@ -87,8 +78,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_29_001215) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "product_categories", "categories"
-  add_foreign_key "product_categories", "products"
   add_foreign_key "product_colors", "colors"
   add_foreign_key "product_colors", "products"
   add_foreign_key "product_tags", "products"
