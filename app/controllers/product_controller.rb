@@ -1,6 +1,6 @@
 class ProductController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).per(15)
   end
 
   def show
@@ -12,7 +12,7 @@ class ProductController < ApplicationController
     @type = params[:type]
 
     @products = Product.where("name LIKE ?", "%#{@query}%")
-    @products = @products.where(type: @type) unless @type == "all"
+    @products = @products.where(product_type: @type) unless @type == "all"
 
     render :index
   end
