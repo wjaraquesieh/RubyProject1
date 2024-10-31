@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "about/index"
   get "category/index"
   get "category/show"
   get "brand/index"
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   get "brand/:id", to: "brand#show", as: "brand"
   get "categories", to: "category#index"
   get "category/:id", to: "category#show", as: "category"
+  get "about", to: "about#index"
 
   resources :product_type, only: [ :index ]
 end
